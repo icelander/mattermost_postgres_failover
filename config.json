@@ -1,0 +1,36 @@
+{
+    "ServiceSettings": {
+        "SiteURL": "http://127.0.0.1:8000"
+    },
+    "TeamSettings": {
+        "SiteName": "PostgreSQL Failover Demo",
+        "ExperimentalPrimaryTeam": "",
+        "MaxUsersPerTeam": 30,        
+        "EnableTutorial": false
+    },
+    "TeamSettings": {
+        "SiteName": "Example Site"
+    },
+    "SqlSettings": {
+        "DriverName": "postgres",
+        "DataSource": "postgres://mmuser:MATTERMOST_PASSWORD@127.0.0.1:5432/mattermost?sslmode=disable&connect_timeout=10"
+    },
+    "PasswordSettings": {
+        "MinimumLength": 5,
+        "Lowercase": false,
+        "Number": false,
+        "Uppercase": false,
+        "Symbol": false
+    },
+    "LogSettings": {
+        "EnableConsole": true,
+        "ConsoleLevel": "DEBUG",
+        "ConsoleJson": false,
+        "EnableFile": true,
+        "FileLevel": "DEBUG",
+        "FileJson": true,
+        "FileLocation": "",
+        "EnableWebhookDebugging": true,
+        "EnableDiagnostics": false
+    }
+}

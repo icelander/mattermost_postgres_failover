@@ -1,0 +1,10 @@
+.vagrant
+.DS_Store
+mattermost*.gz
+config.vagrant.json
+e10license.txt
+e20license.txt
+hosts
+slave_setup.sql
+mattermost_archives
+conf.yaml
