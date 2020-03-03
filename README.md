@@ -1,4 +1,4 @@
-# Blue/Green Failover with PostgreSQL and rubyrep
+# Blue/Green Failover with PostgreSQL and bucardo
 
 ## Problem
 
