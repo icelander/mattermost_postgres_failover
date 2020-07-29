@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-MATTERMOST_VERSION = '5.18.1'
+MATTERMOST_VERSION = '5.25.1'
 
 MATTERMOST_PASSWORD = 'really_secure_password'
 
-GATEWAY_IP = '192.68.33.101'
+GATEWAY_IP = '192.168.33.101'
 APP_IPS = ['192.168.33.102', '192.168.33.103']
 
 # Generate 
@@ -21,12 +21,12 @@ Vagrant.configure("2") do |config|
 			box.vm.network "forwarded_port", guest: 8065, host: "#{i+1}8065".to_i
 		    box.vm.network "forwarded_port", guest: 5432, host: "#{i+1}5432".to_i
 		    box.vm.network "private_network", ip: node_ip
-			
+
 	        box.vm.provision :shell do |s|
 	    	    s.path = 'app_setup.sh'
-	    	    s.args   = ["#{MATTERMOST_VERSION}", 
-	    	                "#{MATTERMOST_PASSWORD}",
-	    	            	"#{POSTGRES_ROOT}"]
+	    	    s.args   = [MATTERMOST_VERSION, 
+	    	                MATTERMOST_PASSWORD,
+	    	            	POSTGRES_ROOT]
 	        end
 		end
 	end
@@ -36,12 +36,17 @@ Vagrant.configure("2") do |config|
 		gateway.vm.network "forwarded_port", guest: 80, host: 8080
 		gateway.vm.network "forwarded_port", guest: 9000, host: 9000
 		gateway.vm.hostname = 'gateway'
+
 		gateway.vm.provision :shell do |s|
 			s.path = 'haproxy_setup.sh'
 		end
 
 		gateway.vm.provision :shell do |s|
 			s.path = 'bucardo_setup.sh'
+		end
+
+		gateway.vm.provision :shell do |s|
+			s.path = 'gluster_setup.sh'
 		end
 	end
 end

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cat /vagrant/hosts_file >> /etc/hosts
+
 echo "Updating Apt Repositories"
 apt-get -q -q -y update
 

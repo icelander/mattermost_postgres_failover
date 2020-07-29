@@ -8,6 +8,8 @@ printf '=%.0s' {1..80}
 echo "Updating apt Repositories"
 apt-get -qq update > /dev/null 2>&1
 
+cat /vagrant/hosts_file >> /etc/hosts
+
 if [ "$1" != "" ]; then
     mattermost_version="$1"
 else
@@ -22,8 +24,15 @@ else
     exit 1
 fi
 
-echo "Installing PostgreSQL and jq"
-apt-get install -y -q postgresql postgresql-contrib jq
+echo "Installing PostgreSQL, GlusterFS, and jq"
+apt-get install -y -q postgresql glusterfs-server postgresql-contrib jq
+
+
+# Create Gluster Server Directory
+mkdir -p /glusterfs/mmst_data
+
+# Start Gluster
+service glusterd start
 
 cp /etc/postgresql/10/main/pg_hba.conf /etc/postgresql/10/main/pg_hba.orig.conf
 cp /vagrant/pg_hba.conf /etc/postgresql/10/main/pg_hba.conf

@@ -1,0 +1,4 @@
+# Added for cluster
+192.168.33.101    gateway
+192.168.33.102    app0
+192.168.33.103    app1
