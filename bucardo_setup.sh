@@ -21,19 +21,19 @@ mkdir -p /var/log/bucardo
 touch /var/log/bucardo/log.bucardo
 apt-get -y install libdbix-safe-perl libdbd-pg-perl postgresql-plperl
 
-wget -q https://github.com/bucardo/bucardo/archive/5.5.0.tar.gz
+wget -q https://github.com/bucardo/bucardo/archive/5.6.0.tar.gz
 
-tar -xzf 5.5.0.tar.gz
+tar -xzf 5.6.0.tar.gz
 
-cd bucardo-5.5.0
+cd bucardo-5.6.0
 
 perl Makefile.PL
 make
 make install
 
-bucardo install --batch
+bucardo install --batch -h localhost
 
-bucardo add db green dbname=mattermost host=192.168.33.102 user=bucardo pass=bucardo port=5432
-bucardo add db blue dbname=mattermost host=192.168.33.103 user=bucardo pass=bucardo port=5432
+bucardo add db green dbname=mattermost host=app0 user=bucardo pass=bucardo port=5432
+bucardo add db blue dbname=mattermost host=app1 user=bucardo pass=bucardo port=5432
 bucardo add sync mattermost dbs=green:source,blue:source tables=all
 bucardo start

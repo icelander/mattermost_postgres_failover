@@ -2,6 +2,7 @@
 
 apt-get install -y -q glusterfs-server
 
+systemctl enable glusterd
 service glusterd start
 
 # Create Gluster Server Directory

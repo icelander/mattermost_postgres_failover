@@ -41,9 +41,9 @@ Vagrant.configure("2") do |config|
 			s.path = 'haproxy_setup.sh'
 		end
 
-		gateway.vm.provision :shell do |s|
-			s.path = 'bucardo_setup.sh'
-		end
+		# gateway.vm.provision :shell do |s|
+		# 	s.path = 'bucardo_setup.sh'
+		# end
 
 		gateway.vm.provision :shell do |s|
 			s.path = 'gluster_setup.sh'

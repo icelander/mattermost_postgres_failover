@@ -32,6 +32,7 @@ apt-get install -y -q postgresql glusterfs-server postgresql-contrib jq
 mkdir -p /glusterfs/mmst_data
 
 # Start Gluster
+systemctl enable glusterd
 service glusterd start
 
 cp /etc/postgresql/10/main/pg_hba.conf /etc/postgresql/10/main/pg_hba.orig.conf
